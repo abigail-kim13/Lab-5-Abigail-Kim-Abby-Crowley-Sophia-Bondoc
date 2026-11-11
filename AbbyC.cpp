@@ -1,58 +1,40 @@
-//Bubble Sort
 #include <iostream>
-#include <vector>
-#include <utility>
 using namespace std;
 
-//Bubble Sort
-void bubbleSort(vector<int>& arr) {
-    int n = arr.size();
+// ---------- Bubble Sort ----------
+void bubbleSort(long arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
-        bool swapped = false;
         for (int j = 0; j < n - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
-                swap(arr[j], arr[j + 1]);
-                swapped = true;
+                long temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
-        if (!swapped) break;
     }
 }
 
+// ---------- Merge Sort (one function) ----------
+void mergeSort(long arr[], int n) {
+    long* temp = new long[n];                  // scratch space
 
+    for (int width = 1; width < n; width *= 2) {          // size of each sorted run
+        for (int left = 0; left < n; left += 2 * width) { // start of each pair of runs
+            int mid = left + width;                       // start of the right run
+            int right = left + 2 * width;                 // end of the right run (exclusive)
+            if (mid > n) mid = n;                         // clamp at the array's end
+            if (right > n) right = n;
 
-
-
-
-
-//Merge Sort
-void merge(vector<int>& arr, int left, int mid, int right) {
-    vector<int> leftPart(arr.begin() + left, arr.begin() + mid + 1);
-    vector<int> rightPart(arr.begin() + mid + 1, arr.begin() + right + 1);
-
-    size_t i = 0, j = 0;
-    int k = left;
-
-    while (i < leftPart.size() && j < rightPart.size()) {
-        if (leftPart[i] <= rightPart[j])  // <= keeps the sort stable
-            arr[k++] = leftPart[i++];
-        else
-            arr[k++] = rightPart[j++];
+            int i = left, j = mid, k = left;
+            while (i < mid && j < right) {                // merge the two runs into temp
+                if (arr[i] <= arr[j]) temp[k++] = arr[i++];
+                else                  temp[k++] = arr[j++];
+            }
+            while (i < mid)   temp[k++] = arr[i++];       // leftovers from left run
+            while (j < right) temp[k++] = arr[j++];       // leftovers from right run
+        }
+        for (int x = 0; x < n; x++) arr[x] = temp[x];     // copy merged result back
     }
-    while (i < leftPart.size())  arr[k++] = leftPart[i++];
-    while (j < rightPart.size()) arr[k++] = rightPart[j++];
-}
 
-void mergeSort(vector<int>& arr, int left, int right) {
-    if (left >= right) return;
-    int mid = left + (right - left) / 2;
-    mergeSort(arr, left, mid);
-    mergeSort(arr, mid + 1, right);
-    merge(arr, left, mid, right);
-}
-
-
-void printArray(const vector<int>& arr) {
-    for (int x : arr) cout << x << " ";
-    cout << "\n";
+    delete[] temp;
 }

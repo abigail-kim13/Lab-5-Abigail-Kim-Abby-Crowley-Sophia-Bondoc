@@ -1,22 +1,24 @@
 #include <iostream>
-#include <vector>
 #include "AbbyC.cpp"
 using namespace std;
 
 int main() {
-    vector<int> data = {64, 34, 25, 12, 22, 11, 90, 5};
+    const int N = 8;
+    long data[N] = {64, 34, 25, 12, 22, 11, 90, 5};
 
-    printArray(data);
-
-    vector<int> a = data;
-    bubbleSort(a);
+    long a[N];
+    for (int i = 0; i < N; i++) a[i] = data[i];
+    bubbleSort(a, N);
     cout << "Bubble sort: ";
-    printArray(a);
+    for (int i = 0; i < N; i++) cout << data[i] << " ";
+    cout << "\n";
 
-    vector<int> b = data;
-    mergeSort(b, 0, b.size() - 1);
+    long b[N];
+    for (int i = 0; i < N; i++) b[i] = data[i];
+    mergeSort(b, N);
     cout << "Merge sort:  ";
-    printArray(b);
+    for (int i = 0; i < N; i++) cout << data[i] << " ";
+    cout << "\n";
 
     return 0;
 }
