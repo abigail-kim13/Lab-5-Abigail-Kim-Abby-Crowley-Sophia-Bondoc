@@ -1,5 +1,6 @@
 #include <iostream>
 #include "AbbyC.cpp"
+#include "AbbyK-Sorts.cpp.cpp"
 #include "insertion_shell.h"
 using namespace std;
 
@@ -34,6 +35,20 @@ int main() {
     cout << "Shell sort: ";
     for (int i = 0; i < N; i++) cout << d[i] << " ";
     cout << "\n";
+
+    long e[N];
+     for (int i = 0; i < N; i++) e[i] = data[i];
+     selectionSort(e, N);
+     cout << "Selection sort: ";
+     for (int i = 0; i < N; i++) cout << e[i] << " ";
+     cout << "\n";
+
+     long f[N];
+     for (int i = 0; i < N; i++) f[i] = data[i];
+     quickSort(f, N);
+     cout << "Quick sort: ";
+     for (int i = 0; i < N; i++) cout << f[i] << " ";
+     cout << "\n";
 
     return 0;
 }
