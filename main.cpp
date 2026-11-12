@@ -1,6 +1,6 @@
 #include <iostream>
-#include "AbbyC.cpp"
-#include "AbbyK-Sorts.cpp.cpp"
+#include "AbbyK-Headers.h"
+#include "AbbyC.h"
 #include "insertion_shell.h"
 using namespace std;
 
