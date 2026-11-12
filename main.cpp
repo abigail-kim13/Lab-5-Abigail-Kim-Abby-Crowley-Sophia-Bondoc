@@ -1,5 +1,6 @@
 #include <iostream>
 #include "AbbyC.cpp"
+#include "insertion_shell.h"
 using namespace std;
 
 int main() {
@@ -18,6 +19,20 @@ int main() {
     mergeSort(b, N);
     cout << "Merge sort:  ";
     for (int i = 0; i < N; i++) cout << data[i] << " ";
+    cout << "\n";
+
+    long c[N];
+    for (int i = 0; i < N; i++) c[i] = data[i];
+    insertionSort(c, N);
+    cout << "Insertion sort: ";
+    for (int i = 0; i < N; i++) cout << c[i] << " ";
+    cout << "\n";
+
+    long d[N];
+    for (int i = 0; i < N; i++) d[i] = data[i];
+    shellSort(d, N);
+    cout << "Shell sort: ";
+    for (int i = 0; i < N; i++) cout << d[i] << " ";
     cout << "\n";
 
     return 0;
