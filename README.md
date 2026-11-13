@@ -5,3 +5,6 @@ Things left to do:
 -create menu to choose sorting method.
 
 Do by 11/12 night
+
+
+I'm going to be working on the main files. Will update when done.
