@@ -2,7 +2,7 @@
 // Lab 5, ECE 2161-001
 // Insertion and shell data sorting algorithms
 
-#include "insertion_shell.h"
+#include "Sophia.h"
 
 #include <iostream>
 using namespace std;
